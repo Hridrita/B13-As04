@@ -54,4 +54,19 @@ rejectedButtons.forEach(button => {
 });
 
 
+function showOnly(id){
+    const jobCards = document.getElementById("job-cards");
+     const getInterview = document.getElementById("interview-section");
+     const getRejected = document.getElementById("rejected-section");
+     
+     jobCards.classList.add("hidden");
+     getInterview.classList.add("hidden");
+     getRejected.classList.add("hidden");
+     
+
+     //id wala element ta k show koro
+     const selected = document.getElementById(id);
+     selected.classList.remove("hidden");
+}
+
 

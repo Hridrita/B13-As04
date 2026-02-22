@@ -52,13 +52,13 @@
         <h1 class="font-semibold text-xl text-[#002c5cFF]">Avaliable Jobs</h1>
 
         <div id="buttons" class="flex gap-2 mb-5">
-            <button id="btn-all" class="btn w-32 text-[#64748bFF]">All</button>
-            <button id="btn-interview" class="btn w-32 text-[#64748bFF]">Interview</button>
-            <button id="btn-rejected" class="btn w-32 text-[#64748bFF]">Rejected</button>
+            <button onclick="showOnly('job-cards')" id="btn-all" class="btn w-32 text-[#64748bFF]">All</button>
+            <button onclick="showOnly('interview-section')" id="btn-interview" class="btn w-32 text-[#64748bFF]">Interview</button>
+            <button onclick="showOnly('rejected-section')" id="btn-rejected" class="btn w-32 text-[#64748bFF]">Rejected</button>
         </div>
 
-        
-            <div id="job-card-1" class=" border border-gray-200 rounded-2xl p-8 shadow bg-white relative">
+        <div id="job-cards">
+          <div id="job-card-1" class=" border border-gray-200 rounded-2xl p-8 shadow bg-white relative">
                  <h1 class="font-semibold text-xl text-[#002c5cFF]">Mobile First Corp</h1>
                  <P id="" class="text-[#64748bFF]">React Native Developer<br><br> Remote . Full-time . $130,000 - $ 175,000</P> <br>
 
@@ -153,11 +153,25 @@
                  <button id="rejected-btn" class="rejected-btn btn text-[#ef4444FF] border border-red-500 w-32">REJECTED</button>
                  <button id="btn-delete" class="absolute top-6 right-8 border border-gray-300 rounded-full w-8 h-8"><i class="fa-regular fa-trash-can  "></i></button>
             </div>
+        </div>
+
+        <div id="interview-section" class="hidden container mx-auto border border-gray-200 rounded-xl p-8 shadow bg-white flex-col items-center text-center flex justify-center" > 
+          <img src="jobs.png" class=""> 
+          <h1 class="text-[#002c5cFF] font-bold ">No Jobs Available</h1> <p class="text-[#64748bFF]">Check back for new job opportunities</p> 
+     </div>
+
+     <div id="rejected-section" class="hidden container mx-auto border border-gray-200 rounded-xl p-8 shadow bg-white flex justify-center flex-col items-center text-center" > 
+          <img src="jobs.png" class=""> 
+          <h1 class="text-[#002c5cFF] font-bold ">No Jobs Available</h1> <p class="text-[#64748bFF]">Check back for new job opportunities</p> 
+     </div>
+            
 
         
-        
+     </section>
 
-    </section>
+     
+
+
 
     <script src="logic.js"></script>
     
