@@ -24,6 +24,8 @@
     </style>
 </head>
 <body>
+     <!--count section-->
+     
     <section id="count-section" class="container mx-auto my-[40px]">
         <h1 class="font-bold text-4xl mb-5 text-[#002c5cFF]">Job Application Tracker</h1>
 
@@ -46,16 +48,20 @@
 
     </section>
 
-    <!--available job-->
+    <!--available job section-->
 
     <section id="available-job" class="container mx-auto space-y-5">
         <h1 class="font-semibold text-xl text-[#002c5cFF]">Avaliable Jobs</h1>
+         
+        <!--3 buttons-->
 
         <div id="buttons" class="flex gap-2 mb-5">
             <button onclick="showOnly('job-cards')" id="btn-all" class="btn w-32 text-[#64748bFF]">All</button>
             <button onclick="showOnly('interview-section')" id="btn-interview" class="btn w-32 text-[#64748bFF]">Interview</button>
             <button onclick="showOnly('rejected-section')" id="btn-rejected" class="btn w-32 text-[#64748bFF]">Rejected</button>
         </div>
+
+        <!--8 cards-->
 
         <div id="job-cards">
           <div id="job-card-1" class=" border border-gray-200 rounded-2xl p-8 shadow bg-white relative">
@@ -154,6 +160,8 @@
                  <button id="btn-delete" class="absolute top-6 right-8 border border-gray-300 rounded-full w-8 h-8"><i class="fa-regular fa-trash-can  "></i></button>
             </div>
         </div>
+
+        <!--no jobs available div-->
 
         <div id="interview-section" class="hidden container mx-auto border border-gray-200 rounded-xl p-8 shadow bg-white flex-col items-center text-center flex justify-center" > 
           <img src="jobs.png" class=""> 
