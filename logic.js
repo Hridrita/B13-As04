@@ -1,5 +1,6 @@
 const interviewButtons = document.querySelectorAll('.interview-btn');
 const rejectedButtons = document.querySelectorAll('.rejected-btn');
+const allDeleteButtons = document.querySelectorAll('.btn-delete'); // 
 
 const imgIcon = document.getElementById("img");
 const noJob = document.getElementById("no-job");
@@ -10,6 +11,16 @@ const noJobR = document.getElementById("no-job-r");
 const paraR = document.getElementById("para-r");
 
 
+allDeleteButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+        const card = this.parentElement;
+        card.remove(); 
+        
+        
+        const totalNumber = document.getElementById("total-number");
+        totalNumber.innerText = parseInt(totalNumber.innerText) - 1;
+    });
+});
 
 
 interviewButtons.forEach(button => {
@@ -27,7 +38,6 @@ interviewButtons.forEach(button => {
         const cardCopy = card.cloneNode(true);
         const interviewContainer = document.getElementById('interview-section');
         const rejectedContainer = document.getElementById('rejected-section');
-        
         
         interviewContainer.classList.remove('items-center', 'text-center', 'justify-center');
         interviewContainer.classList.add('items-stretch', 'gap-3');
@@ -49,7 +59,6 @@ interviewButtons.forEach(button => {
                 copyAppliedBtn.classList.remove('btn-success', 'bg-green-500');
                 copyAppliedBtn.classList.add('btn-error', 'bg-red-500');
 
-                
                 rejectedContainer.classList.remove('items-center', 'text-center', 'justify-center');
                 rejectedContainer.classList.add('items-stretch', 'gap-3');
 
@@ -78,7 +87,7 @@ interviewButtons.forEach(button => {
     });
 });
 
-
+// --- REJECTED BUTTON LOGIC --- (আপনার আগের লজিক অপরিবর্তিত)
 rejectedButtons.forEach(button => {
     button.addEventListener('click', function() {
         const card = this.parentElement;
@@ -94,7 +103,6 @@ rejectedButtons.forEach(button => {
 
         const rejectedContainer = document.getElementById('rejected-section');
         const interviewContainer = document.getElementById('interview-section');
-        
         
         rejectedContainer.classList.remove('items-center', 'text-center', 'justify-center');
         rejectedContainer.classList.add('items-stretch', 'gap-3');
@@ -116,7 +124,6 @@ rejectedButtons.forEach(button => {
                 copyAppliedBtn.classList.remove('btn-error', 'bg-red-500');
                 copyAppliedBtn.classList.add('btn-success', 'bg-green-500');
 
-                
                 interviewContainer.classList.remove('items-center', 'text-center', 'justify-center');
                 interviewContainer.classList.add('items-stretch', 'gap-3');
 
