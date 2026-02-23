@@ -1,10 +1,17 @@
 const interviewButtons = document.querySelectorAll('.interview-btn');
 const rejectedButtons = document.querySelectorAll('.rejected-btn');
 
-//get variables to hide by dafault img and para
+//get variables to hide by dafault img and para in interview section
 const imgIcon = document.getElementById("img");
 const noJob = document.getElementById("no-job");
 const para = document.getElementById("para");
+
+//get variables to hide by dafault img and para in rejected section
+const imgIconR = document.getElementById("img-r");
+const noJobR = document.getElementById("no-job-r");
+const paraR = document.getElementById("para-r");
+
+
 
 interviewButtons.forEach(button => {
     button.addEventListener('click', function() {
@@ -59,6 +66,8 @@ rejectedButtons.forEach(button => {
         
         appliedBtn.innerText = "REJECTED";
 
+        const cardCopy = card.cloneNode(true);
+
         
         appliedBtn.classList.remove('btn-primary', 'text-[#002c5cFF]', 'bg-green-500', 'btn-success');
         
@@ -68,6 +77,16 @@ rejectedButtons.forEach(button => {
         const totalRejected = document.getElementById("rejected-number");
         const totalRejectedNumber = parseInt(totalRejected.innerText);
         totalRejected.innerText = totalRejectedNumber + 1;
+
+        const rejectedContainer = document.getElementById('rejected-section');
+        rejectedContainer.classList.remove('items-center', 'text-center');
+        rejectedContainer.classList.add('items-stretch', 'gap-3');
+        rejectedContainer.appendChild(cardCopy);
+    
+
+        imgIconR.classList.add("hidden");
+        noJobR.classList.add("hidden");
+        paraR.classList.add("hidden");
     });
 });
 
@@ -85,6 +104,8 @@ function showOnly(id){
      //id wala element ta k show koro
      const selected = document.getElementById(id);
      selected.classList.remove("hidden");
+
+     
 }
 
 
