@@ -1,6 +1,6 @@
 const interviewButtons = document.querySelectorAll('.interview-btn');
 const rejectedButtons = document.querySelectorAll('.rejected-btn');
-const allDeleteButtons = document.querySelectorAll('.btn-delete'); // 
+const deleteButtons = document.querySelectorAll('.btn-delete'); 
 
 const imgIcon = document.getElementById("img");
 const noJob = document.getElementById("no-job");
@@ -11,7 +11,7 @@ const noJobR = document.getElementById("no-job-r");
 const paraR = document.getElementById("para-r");
 
 
-allDeleteButtons.forEach(btn => {
+deleteButtons.forEach(btn => {
     btn.addEventListener('click', function() {
         const card = this.parentElement;
         card.remove(); 
@@ -87,7 +87,7 @@ interviewButtons.forEach(button => {
     });
 });
 
-// --- REJECTED BUTTON LOGIC --- (আপনার আগের লজিক অপরিবর্তিত)
+
 rejectedButtons.forEach(button => {
     button.addEventListener('click', function() {
         const card = this.parentElement;
