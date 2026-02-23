@@ -1,14 +1,19 @@
 const interviewButtons = document.querySelectorAll('.interview-btn');
 const rejectedButtons = document.querySelectorAll('.rejected-btn');
 
-
-
+//get variables to hide by dafault img and para
+const imgIcon = document.getElementById("img");
+const noJob = document.getElementById("no-job");
+const para = document.getElementById("para");
 
 interviewButtons.forEach(button => {
     button.addEventListener('click', function() {
         //1. sob gula card er not applied button k access krbo
         const card = this.parentElement; 
         const appliedBtn = card.querySelector('.applied-btn');
+
+        //
+        const cardCopy = card.cloneNode(true);
 
         //2. button e interview lekha uthbe
         
@@ -29,6 +34,19 @@ interviewButtons.forEach(button => {
         const totalInterview = document.getElementById("interview-number");
         const totalInterviewNumber = parseInt(totalInterview.innerText);
         totalInterview.innerText = totalInterviewNumber + 1;
+
+        //to get interview cards in interview section
+
+        const interviewContainer = document.getElementById('interview-section');
+        interviewContainer.classList.remove('items-center', 'text-center');
+        interviewContainer.classList.add('items-stretch', 'gap-3');
+        interviewContainer.appendChild(cardCopy);
+    
+
+        imgIcon.classList.add("hidden");
+        noJob.classList.add("hidden");
+        para.classList.add("hidden");
+        
 
         
     });
