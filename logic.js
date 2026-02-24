@@ -11,14 +11,32 @@ const noJobR = document.getElementById("no-job-r");
 const paraR = document.getElementById("para-r");
 
 
+function updateAllCounters() {
+    
+    const availableJobCards = document.getElementById("job-cards").children.length;
+    const allCountElement = document.getElementById("all-count");
+    if (allCountElement) {
+        allCountElement.innerText = availableJobCards;
+    }
+
+    
+    const intCardsCount = document.getElementById("interview-section").querySelectorAll('.relative').length;
+    document.getElementById("interview-number").innerText = intCardsCount;
+
+    const rejCardsCount = document.getElementById("rejected-section").querySelectorAll('.relative').length;
+    document.getElementById("rejected-number").innerText = rejCardsCount;
+}
+
 deleteButtons.forEach(btn => {
     btn.addEventListener('click', function() {
         const card = this.parentElement;
         card.remove(); 
         
-        
         const totalNumber = document.getElementById("total-number");
         totalNumber.innerText = parseInt(totalNumber.innerText) - 1;
+        
+        
+        updateAllCounters();
     });
 });
 
@@ -31,9 +49,6 @@ interviewButtons.forEach(button => {
         appliedBtn.innerText = "INTERVIEWED";
         appliedBtn.classList.remove('btn-primary', 'text-[#002c5cFF]', 'bg-red-500', 'btn-error');
         appliedBtn.classList.add('btn-success', 'text-white', 'bg-green-500');
-
-        const totalInterview = document.getElementById("interview-number");
-        totalInterview.innerText = parseInt(totalInterview.innerText) + 1;
 
         const cardCopy = card.cloneNode(true);
         const interviewContainer = document.getElementById('interview-section');
@@ -51,9 +66,6 @@ interviewButtons.forEach(button => {
             const copyInterviewBtn = currentCard.querySelector('.interview-btn');
 
             copyRejectedBtn.onclick = function() {
-                document.getElementById("interview-number").innerText = parseInt(document.getElementById("interview-number").innerText) - 1;
-                document.getElementById("rejected-number").innerText = parseInt(document.getElementById("rejected-number").innerText) + 1;
-
                 const copyAppliedBtn = currentCard.querySelector('.applied-btn');
                 copyAppliedBtn.innerText = "REJECTED";
                 copyAppliedBtn.classList.remove('btn-success', 'bg-green-500');
@@ -64,13 +76,11 @@ interviewButtons.forEach(button => {
 
                 rejectedContainer.appendChild(currentCard);
                 updateEmptyStates();
+                updateAllCounters(); 
             };
 
             copyInterviewBtn.onclick = function() {
                 if(currentCard.parentElement.id === 'rejected-section'){
-                    document.getElementById("rejected-number").innerText = parseInt(document.getElementById("rejected-number").innerText) - 1;
-                    document.getElementById("interview-number").innerText = parseInt(document.getElementById("interview-number").innerText) + 1;
-
                     const copyAppliedBtn = currentCard.querySelector('.applied-btn');
                     copyAppliedBtn.innerText = "INTERVIEWED";
                     copyAppliedBtn.classList.remove('btn-error', 'bg-red-500');
@@ -78,12 +88,14 @@ interviewButtons.forEach(button => {
 
                     interviewContainer.appendChild(currentCard);
                     updateEmptyStates();
+                    updateAllCounters(); 
                 }
             };
         };
 
         setupCardLogic(cardCopy);
         interviewContainer.appendChild(cardCopy);
+        updateAllCounters(); 
     });
 });
 
@@ -98,9 +110,6 @@ rejectedButtons.forEach(button => {
         appliedBtn.classList.add('btn-error', 'text-white', 'bg-red-500');
 
         const cardCopy = card.cloneNode(true);
-        const totalRejected = document.getElementById("rejected-number");
-        totalRejected.innerText = parseInt(totalRejected.innerText) + 1;
-
         const rejectedContainer = document.getElementById('rejected-section');
         const interviewContainer = document.getElementById('interview-section');
         
@@ -116,9 +125,6 @@ rejectedButtons.forEach(button => {
             const copyRejectedBtn = currentCard.querySelector('.rejected-btn');
 
             copyInterviewBtn.onclick = function() {
-                document.getElementById("rejected-number").innerText = parseInt(document.getElementById("rejected-number").innerText) - 1;
-                document.getElementById("interview-number").innerText = parseInt(document.getElementById("interview-number").innerText) + 1;
-
                 const copyAppliedBtn = currentCard.querySelector('.applied-btn');
                 copyAppliedBtn.innerText = "INTERVIEWED";
                 copyAppliedBtn.classList.remove('btn-error', 'bg-red-500');
@@ -129,13 +135,11 @@ rejectedButtons.forEach(button => {
 
                 interviewContainer.appendChild(currentCard);
                 updateEmptyStates();
+                updateAllCounters(); 
             };
 
             copyRejectedBtn.onclick = function() {
                 if(currentCard.parentElement.id === 'interview-section'){
-                    document.getElementById("interview-number").innerText = parseInt(document.getElementById("interview-number").innerText) - 1;
-                    document.getElementById("rejected-number").innerText = parseInt(document.getElementById("rejected-number").innerText) + 1;
-
                     const copyAppliedBtn = currentCard.querySelector('.applied-btn');
                     copyAppliedBtn.innerText = "REJECTED";
                     copyAppliedBtn.classList.remove('btn-success', 'bg-green-500');
@@ -143,12 +147,14 @@ rejectedButtons.forEach(button => {
 
                     rejectedContainer.appendChild(currentCard);
                     updateEmptyStates();
+                    updateAllCounters(); 
                 }
             };
         };
 
         setupCardLogic(cardCopy);
         rejectedContainer.appendChild(cardCopy);
+        updateAllCounters(); 
     });
 });
 
@@ -156,7 +162,7 @@ function updateEmptyStates() {
     const intContainer = document.getElementById('interview-section');
     const rejContainer = document.getElementById('rejected-section');
 
-    const isIntEmpty = intContainer.getElementsByClassName('relative').length === 0;
+    const isIntEmpty = intContainer.querySelectorAll('.relative').length === 0;
     imgIcon.classList.toggle("hidden", !isIntEmpty);
     noJob.classList.toggle("hidden", !isIntEmpty);
     para.classList.toggle("hidden", !isIntEmpty);
@@ -166,7 +172,7 @@ function updateEmptyStates() {
         intContainer.classList.remove('items-stretch');
     }
 
-    const isRejEmpty = rejContainer.getElementsByClassName('relative').length === 0;
+    const isRejEmpty = rejContainer.querySelectorAll('.relative').length === 0;
     imgIconR.classList.toggle("hidden", !isRejEmpty);
     noJobR.classList.toggle("hidden", !isRejEmpty);
     paraR.classList.toggle("hidden", !isRejEmpty);
@@ -189,3 +195,12 @@ function showOnly(id){
     const selected = document.getElementById(id);
     selected.classList.remove("hidden");
 }
+
+updateAllCounters();
+
+
+
+
+
+
+

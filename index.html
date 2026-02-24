@@ -51,13 +51,21 @@
     <!--available job section-->
 
     <section id="available-job" class="container mx-auto space-y-5">
-        <h1 class="font-semibold text-xl text-[#002c5cFF]">Avaliable Jobs</h1>
+     <div class="flex justify-between">
+          <h1 class="font-semibold text-xl text-[#002c5cFF]">Avaliable Jobs</h1>
+
+        <p><span id="all-count">8</span> jobs</p>
+     </div>
+        
          
         <!--3 buttons-->
 
         <div id="buttons" class="flex flex-wrap gap-2 mb-5">
+          
             <button onclick="showOnly('job-cards')" id="btn-all" class="btn w-32 text-[#64748bFF]">All</button>
+            
             <button onclick="showOnly('interview-section')" id="btn-interview" class="btn w-32 text-[#64748bFF]">Interview</button>
+            
             <button onclick="showOnly('rejected-section')" id="btn-rejected" class="btn w-32 text-[#64748bFF]">Rejected</button>
         </div>
 
